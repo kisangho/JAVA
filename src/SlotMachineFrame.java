@@ -219,3 +219,5 @@ public class SlotMachineFrame extends JFrame {
         return START_COIN;
     }
 }
+
+//chat-gpt를 사용하여 작성한코드
