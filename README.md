@@ -23,7 +23,7 @@
 ## 🚀 실행 방법 (How to Run)
 
 1. 이 저장소를 클론하거나 소스 코드를 다운로드합니다.
-2. `SlotMachineFrame.java` 파일을 컴파일하고 실행합니다.
+2. `Main.java` 파일을 컴파일하고 실행합니다.
 
 ```bash
 javac SlotMachineFrame.java
