@@ -26,5 +26,3 @@
 2. `Main.java` 파일을 컴파일하고 실행합니다.
 
 ```bash
-javac SlotMachineFrame.java
-java SlotMachineFrame
