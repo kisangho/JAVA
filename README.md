@@ -17,7 +17,7 @@
 
 * **Language**: Java 8+
 * **Framework**: Java Swing / AWT
-
+* **AI**: chat-GPT
 ---
 
 ## 🚀 실행 방법 (How to Run)
