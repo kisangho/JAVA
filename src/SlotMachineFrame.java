@@ -27,9 +27,7 @@ public class SlotMachineFrame extends JFrame {
     private Timer timer;
     private int tick;
 
-    private int reel1Index;
-    private int reel2Index;
-    private int reel3Index;
+
 
     public SlotMachineFrame() {
 
