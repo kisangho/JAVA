@@ -78,7 +78,12 @@ public class SlotMachineFrame extends JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                saveCoin();
+                if (coin == 0) {
+                    deleteCoinFile();
+                } else {
+                    saveCoin();
+                }
+
                 System.exit(0);
             }
         });
@@ -98,8 +103,15 @@ public class SlotMachineFrame extends JFrame {
     // ================= SPIN =================
     private void startSpin() {
 
+        if (coin <= 0) {
+            resultLabel.setForeground(Color.RED);
+            resultLabel.setText("코인이 0입니다. 게임을 종료하면 저장 파일이 삭제됩니다.");
+            return;
+        }
+
         if (coin < 10) {
             resultLabel.setForeground(Color.RED);
+            
             resultLabel.setText("코인이 부족합니다");
             return;
         }
@@ -113,24 +125,20 @@ public class SlotMachineFrame extends JFrame {
 
         tick = 0;
 
-        reel1Index = random.nextInt(symbols.length);
-        reel2Index = random.nextInt(symbols.length);
-        reel3Index = random.nextInt(symbols.length);
-
         timer = new Timer(80, e -> {
 
             tick++;
 
             if (tick < 20) {
-                slot1.setText(symbols[++reel1Index % symbols.length]);
+                slot1.setText(symbols[random.nextInt(symbols.length)]);
             }
 
             if (tick < 35) {
-                slot2.setText(symbols[++reel2Index % symbols.length]);
+                slot2.setText(symbols[random.nextInt(symbols.length)]);
             }
 
             if (tick < 50) {
-                slot3.setText(symbols[++reel3Index % symbols.length]);
+                slot3.setText(symbols[random.nextInt(symbols.length)]);
             }
 
             if (tick >= 50) {
@@ -178,6 +186,19 @@ public class SlotMachineFrame extends JFrame {
         }
     }
 
+    // ================= DELETE SAVE FILE =================
+    private void deleteCoinFile() {
+        File file = new File("coin.txt");
+
+        if (file.exists()) {
+            boolean deleted = file.delete();
+
+            if (!deleted) {
+                System.out.println("coin.txt 삭제 실패");
+            }
+        }
+    }
+
     // ================= LOAD =================
     private int loadCoin() {
 
@@ -195,3 +216,5 @@ public class SlotMachineFrame extends JFrame {
         return 500;
     }
 }
+
+//chatGPT를 사용해 작성한 코드
